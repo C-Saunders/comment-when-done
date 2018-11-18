@@ -126,14 +126,14 @@ default_permissions:
 
 
 # The name of the GitHub App. Defaults to the name specified in package.json
-# name: My Probot App
+name: comment-when-done
 
 # The homepage of your GitHub App.
-# url: https://example.com/
+url: https://github.com/C-Saunders/comment-when-done
 
 # A description of the GitHub App.
-# description: A description of my awesome app
+description: A Probot app that makes a comment on a merged PR or closed issue with content you specify in the issue/PR body.
 
 # Set to true when your GitHub App is available to the public or false when it is only accessible to the owner of the app.
 # Default: true
-# public: false
+public: false

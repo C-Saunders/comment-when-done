@@ -1,8 +1,12 @@
 {
   "name": "comment-when-done",
   "version": "0.1.0",
-  "description": "A Probot app that makes a comment on a merged PR or closed issue with content you write in the issue/PR body.",
+  "description": "A Probot app that makes a comment on a merged PR or closed issue with content you specify in the issue/PR body.",
   "author": "Charlie Saunders <charlieasaunders@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/C-Saunders/comment-when-done"
+  },
   "license": "ISC",
   "keywords": [
     "probot",

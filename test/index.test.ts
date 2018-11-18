@@ -1,52 +1,82 @@
-// You can import your modules
-// import index from '../src/index'
-
 import nock from 'nock'
-// Requiring our app implementation
-import myProbotApp from '../src'
 import { Probot } from 'probot'
-// Requiring our fixtures
-import payload from './fixtures/issues.opened.json'
-const issueCreatedBody = { body: 'Thanks for opening this issue!' }
+import whenDone from '../src'
+
+const failTest = () => expect(true).toBeFalsy()
 
 nock.disableNetConnect()
 
-describe('My Probot app', () => {
+describe('When issues are closed', () => {
   let probot: any
 
   beforeEach(() => {
-    probot = new Probot({ id: 123, cert: 'test' })
-    // Load our app into probot
-    const app = probot.load(myProbotApp)
-
-    // just return a test token
+    probot = new Probot({})
+    const app = probot.load(whenDone)
     app.app = () => 'test'
   })
 
-  test('creates a comment when an issue is opened', async () => {
-    // Test that we correctly return a test token
+  test('it creates a comment with the data enclosed in the whendone markers', async () => {
     nock('https://api.github.com')
-      .post('/app/installations/2/access_tokens')
+      .post('/app/installations/461842/access_tokens')
       .reply(200, { token: 'test' })
 
-    // Test that a comment is posted
     nock('https://api.github.com')
-      .post('/repos/hiimbex/testing-things/issues/1/comments', (body: any) => {
-        expect(body).toMatchObject(issueCreatedBody)
+      .post('/repos/C-Saunders/flynn_env_test/issues/1/comments', (body: any) => {
+        expect(body).toMatchObject({ body: 'Inline whendone content' })
         return true
       })
       .reply(200)
 
-    // Receive a webhook event
-    await probot.receive({ name: 'issues', payload })
+    await probot.receive({ name: 'issues', payload: require('./fixtures/issues.closed.json') })
   })
 })
 
-// For more information about testing with Jest see:
-// https://facebook.github.io/jest/
+describe('When pull requests are merged', () => {
+  let probot: any
 
-// For more information about using TypeScript in your tests, Jest recommends:
-// https://github.com/kulshekhar/ts-jest
+  beforeEach(() => {
+    probot = new Probot({})
+    const app = probot.load(whenDone)
+    app.app = () => 'test'
+  })
 
-// For more information about testing with Nock see:
-// https://github.com/nock/nock
+  test('it creates a comment with the data enclosed in the whendone markers', async () => {
+    nock('https://api.github.com')
+      .post('/app/installations/461842/access_tokens')
+      .reply(200, { token: 'test' })
+
+    nock('https://api.github.com')
+      .post('/repos/C-Saunders/flynn_env_test/issues/2/comments', (body: any) => {
+        expect(body).toMatchObject({ body: 'Comment that is\r\nspanning multiple lines' })
+        return true
+      })
+      .reply(200)
+
+    await probot.receive({ name: 'pull_request', payload: require('./fixtures/pull_requests.merged.json') })
+  })
+})
+
+describe('When pull requests are closed', () => {
+  let probot: any
+
+  beforeEach(() => {
+    probot = new Probot({})
+    const app = probot.load(whenDone)
+    app.app = () => 'test'
+  })
+
+  test('it does not make a comment', async () => {
+    nock('https://api.github.com')
+      .post('/app/installations/461842/access_tokens')
+      .reply(200, { token: 'test' })
+
+    nock('https://api.github.com')
+      .post('/repos/C-Saunders/flynn_env_test/pulls/3/comments', () => {
+        failTest()
+        return true
+      })
+      .reply(200)
+
+    await probot.receive({ name: 'pull_request', payload: require('./fixtures/pull_requests.closed.json') })
+  })
+})
