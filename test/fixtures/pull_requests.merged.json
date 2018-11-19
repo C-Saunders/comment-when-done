@@ -33,7 +33,7 @@
       "type": "User",
       "site_admin": false
     },
-    "body": "{{whendone}}\r\nComment that is\r\nspanning multiple lines\r\n{{/whendone}}\r\n\r\nHello world!{{whendone}}Second comment has inline data{{/whendone}}\r\n\r\n",
+    "body": "{{whendone}}\r\nComment that is\r\nspanning multiple lines\r\n{{/whendone}}\r\n\r\nHello world!",
     "created_at": "2018-11-18T18:54:23Z",
     "updated_at": "2018-11-18T18:54:32Z",
     "closed_at": "2018-11-18T18:54:32Z",

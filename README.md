@@ -6,13 +6,23 @@ It makes comments on issues when they're _closed_ and pull requests when they're
 
 The comment contents should be placed between an opening sentinel- `{{whendone}}` and closing sentinel- `{{/whendone}}`.
 * The opening `{{whendone}}` must be at the beginning of a line
-* Inline data like `{{whendone}}Tell Sam this bug is fixed{{/whendone}}` will work
-* Multi-line data like this will also work
+* Single line commands like this will work
+```
+{{whendone}}Tell Sam this bug is fixed{{/whendone}}
+```
+* Multi-line commands like this will also work
 ```
 {{whendone}}
-Set up the new alerts that require this data.
-
-Let Pat know to adjust the dashboards.
+Set up the new alerts.
+Let Pat know they should adjust the dashboards.
+{{/whendone}}
+```
+* You can "escape" slash commands (e.g. from [the Probot reminer app](https://github.com/probot/reminders)) and @mentions by wrapping them in backticks
+```
+{{whendone}}
+`/remind` me to set up the new alerts in two weeks.
+Let `@this-is-pat` know they should adjust the dashboards.
+`/remind` @another-person to stretch 20 minutes.
 {{/whendone}}
 ```
 
