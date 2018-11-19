@@ -13,8 +13,12 @@ export = (app: Application) => {
     const matches = (issue || pr).body.match(matcher)
 
     if (matches && matches[1]) {
-      const newComment = context.issue({ body: matches[1].trim() })
+      const newComment = context.issue({ body: clean(matches[1]) })
       await context.github.issues.createComment(newComment)
     }
   })
+}
+
+function clean (rawData: string): string {
+  return rawData.trim().replace(/`([/@][^`]+)`/g, '$1')
 }
