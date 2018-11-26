@@ -1,0 +1,31 @@
+service: comment-when-done
+
+provider:
+  name: google
+  runtime: nodejs8
+  project: ${env:API_PROJECT_ID}
+  credentials: ~/.gcloud/comment-when-done.json
+
+plugins:
+  - serverless-google-cloudfunctions
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin
+
+package:
+  exclude:
+    - ./**
+
+  include:
+    - index.js
+    - package.json
+    - package-lock.json
+
+functions:
+  comment-when-done:
+    handler: probot
+    environment:
+      APP_ID: ${env:APP_ID}
+      PRIVATE_KEY: ${env:PRIVATE_KEY}
+      WEBHOOK_SECRET: ${env:WEBHOOK_SECRET}
+    events:
+      - http: path
