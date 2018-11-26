@@ -5,21 +5,22 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es5",
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": true,
     "pretty": true,
     "strict": true,
     "sourceMap": true,
-    "outDir": "./lib",
+    "outDir": ".build",
     "skipLibCheck": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "declaration": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "rootDir": "./"
   },
-  "include": [
-    "src/**/*"
+  "files": [
+    "index.ts"
   ],
   "compileOnSave": false
 }

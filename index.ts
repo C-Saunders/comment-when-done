@@ -1,8 +1,13 @@
 import { Application, Context } from 'probot' // eslint-disable-line no-unused-vars
+import { serverless } from '@probot/serverless-gcf'
 
 const matcher = /^{{whendone}}([\s\S]*?){{\/whendone}}$/m
 
-export = (app: Application) => {
+const probot = serverless(whenDone)
+
+export { probot, whenDone }
+
+function whenDone (app: Application) {
   app.on(['issues.closed', 'pull_request.closed'], async (context: Context) => {
     const { issue, pull_request: pr } = context.payload
 
