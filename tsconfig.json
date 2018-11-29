@@ -19,8 +19,6 @@
     "resolveJsonModule": true,
     "rootDir": "./"
   },
-  "files": [
-    "index.ts"
-  ],
+  "include": ["*.ts"],
   "compileOnSave": false
 }

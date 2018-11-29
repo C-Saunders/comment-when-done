@@ -1,6 +1,6 @@
 import nock from 'nock'
 import { Probot } from 'probot'
-import { whenDone } from '../index'
+import { whenDone } from '../lib'
 
 const failTest = () => expect(true).toBeFalsy()
 
