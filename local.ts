@@ -1,3 +1,3 @@
-import { whenDone } from './lib'
+import { whenDone } from './index'
 
 export = whenDone

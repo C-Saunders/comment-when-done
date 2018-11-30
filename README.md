@@ -28,13 +28,6 @@ Let `@this-is-pat` know they should adjust the dashboards.
 {{/whendone}}
 ```
 
-## Deploy your own!
-
-1. `git clone`
-1. `npm install`
-1. `npm run start`
-1. https://serverless.com/framework/docs/providers/google/guide/quick-start/
-
 ## Contributing
 
 If you have suggestions for how this application could be improved, want to report a bug, have a question, etc., please open an issue! We love all and any contributions.
