@@ -4,6 +4,8 @@ This is GitHub App built with [Probot](https://github.com/probot/probot).
 
 It makes comments on issues when they're _closed_ and pull requests when they're _merged_. Pull requests that are closed without being merged will not trigger the bot to make a comment.
 
+## Usage
+
 The comment contents should be placed between an opening sentinel- `{{whendone}}` and closing sentinel- `{{/whendone}}`.
 * The opening `{{whendone}}` must be at the beginning of a line
 * Single line commands like this will work
