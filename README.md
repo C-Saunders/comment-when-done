@@ -6,7 +6,7 @@ This GitHub App automatically comments on issues when they're _closed_ and pull 
 
 ## Usage
 
-The content of the comment you want the app to make needs to be in the _body_ of the issue or pull request (a comment won't work). Also note that pull requests that are _closed without merging_ will not trigger the app to make a comment.
+The content of the comment you want the app to make needs to be in the _body_  (description) of the issue or pull request (a comment on the pull request or issue won't work). Also note that pull requests that are _closed without merging_ will not trigger the app to make a comment.
 
 The comment contents should be placed between an opening sentinel- `{{whendone}}` and closing sentinel- `{{/whendone}}`.
 * The opening `{{whendone}}` must be at the beginning of a line
