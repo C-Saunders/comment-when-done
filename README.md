@@ -1,18 +1,20 @@
 # comment-when-done
 
-This is GitHub App built with [Probot](https://github.com/probot/probot).
+Are there times when you want a reminder to do something once an issue is resolved or a pull request is merged?
 
-It makes comments on issues when they're _closed_ and pull requests when they're _merged_. Pull requests that are closed without being merged will not trigger the bot to make a comment.
+This GitHub App automatically comments on issues when they're _closed_ and pull requests when they're _merged_ so you can get a notification when you need it!
 
 ## Usage
 
+The content of the comment you want the app to make needs to be in the _body_  (description) of the issue or pull request (a comment on the pull request or issue won't work). Also note that pull requests that are _closed without merging_ will not trigger the app to make a comment.
+
 The comment contents should be placed between an opening sentinel- `{{whendone}}` and closing sentinel- `{{/whendone}}`.
 * The opening `{{whendone}}` must be at the beginning of a line
-* Single line commands like this will work
+* Single line comments like this will work
 ```
 {{whendone}}Tell Sam this bug is fixed{{/whendone}}
 ```
-* Multi-line commands like this will also work
+* Multi-line comments like this will also work
 ```
 {{whendone}}
 Set up the new alerts.
