@@ -19,7 +19,7 @@ Set up the new alerts.
 Let Pat know they should adjust the dashboards.
 {{/whendone}}
 ```
-* You can "escape" slash commands (e.g. from [the Probot reminer app](https://github.com/probot/reminders)) and @mentions by wrapping them in backticks
+* You can "escape" slash commands (e.g. from [the Probot reminder app](https://github.com/probot/reminders)) and @mentions by wrapping them in backticks
 ```
 {{whendone}}
 `/remind` me to set up the new alerts in two weeks.
