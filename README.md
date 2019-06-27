@@ -44,14 +44,18 @@ npm run start
 
 `npm run start` will facilitate the authorization flow that results from `probot run` and guide you to set up a GitHub app. It will create and populate a local .env file containing the secrets you'll need to be available as environment variables when the bot runs.
 
-The secrets in the .env file will be read by `serverless` when you deploy.
+You'll also need to set `API_PROJECT_ID` in .env, as shown in `.env.example`.
+
+The secrets in the .env file will be read by `serverless` when you run the deploy command.
 
 Follow the instructions [provided by serverless](https://serverless.com/framework/docs/providers/google/guide/quick-start#2-set-up-the-credentials) to set up your GCP credentials. Save your credentials JSON file in `~/.gcloud/comment-when-done.json` (or update this path in serverless.yml to meet your needs).
 
 ```
 npm install -g serverless
-serverless deploy
+serverless deploy // you may want to specify the --region option, depending on your setup
 ```
+
+The output of `serverless deploy` will include the webhook URL you will need to configure your GitHub App. It should be used to replace the smee URL that probot uses to get you started.
 
 ## Contributing
 
